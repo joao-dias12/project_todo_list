@@ -32,6 +32,13 @@ export function NewTask(){
                     <PlusCircle size={16} /> 
             </button>
 
+            <div className={styles.tasksCreated}>
+                {tasks.map(task => {
+                    return <Tasks content={task.content} />
+                })}
+                
+
+            </div>
         </div>
     )
 }
