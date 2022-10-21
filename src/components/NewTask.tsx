@@ -4,6 +4,23 @@ import { Tasks } from './Tasks'
 
 import styles from './NewTask.module.css';
 
+const tasks = [
+    {
+        id: 1,
+        content: "Comprar arroz",
+        isCompleted: false,
+    },
+    {
+        id: 2,
+        content: "Comprar Feijão",
+        isCompleted: false,
+    },
+    {
+        id: 3,
+        content: "Ir na Academia",
+        isCompleted: false,
+    }
+    ]
 export function NewTask(){
 
     return (
