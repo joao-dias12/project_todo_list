@@ -1,5 +1,7 @@
 import { PlusCircle } from 'phosphor-react'
 
+import { Tasks } from './Tasks'
+
 import styles from './NewTask.module.css';
 
 export function NewTask(){

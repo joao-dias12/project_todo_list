@@ -1,17 +1,25 @@
-// import { Trash } from 'phosphor-react'
+import { Trash } from 'phosphor-react'
 
 // import styles from './Tasks.module.css'
 
 
+interface TaskProps {
+        id?: number,
+        content: string,
+        isCompleted?: boolean;
+    }
 
-//     interface TaskProps {
-//         id?: number,
-//         content: string,
-//         isCompleted?: boolean;
-//     }
+export function Tasks( props:TaskProps ){
+    return (
+        
+        <div className='' >
+               <input type="checkbox" /> 
+               
+              <span>{props.content}</span>
 
-export function Task(){
-    return <p> Hello</p>
+               <Trash size={24} />
+     </div>
+    )
 }
 // export function Tasks(props: TaskProps){
     

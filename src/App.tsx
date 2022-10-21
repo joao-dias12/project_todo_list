@@ -2,9 +2,6 @@
 import { Header } from './components/Header';
 import { NewTask } from './components/NewTask';
 
-import{ Task } from './components/Tasks'
-
-
 import styles from './App.module.css'
 
 import './global.css'
@@ -17,32 +14,14 @@ export function App() {
 
       <div className={styles.app}>
         <NewTask/>
-        <main className='Tasks'>
-          Todas as Tasks
-        </main>
+       
 
       </div>
     </div>
     )
   }
   
-  //   const tasks = [
-  //     {
-  //         id: 1,
-  //         content: "Comprar arroz",
-  //         isCompleted: false,
-  //     },
-  //     {
-  //         id: 2,
-  //         content: "Comprar Feijão",
-  //         isCompleted: false,
-  //     },
-  //     {
-  //         id: 3,
-  //         content: "Ir na Academia",
-  //         isCompleted: false,
-  //     }
-  //     ]
+  
 
 
 
