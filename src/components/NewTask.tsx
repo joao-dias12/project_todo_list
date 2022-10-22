@@ -35,6 +35,11 @@ export function NewTask(){
     function handleNewTasksChange(event: ChangeEvent<HTMLInputElement>) { // Método para monitorar e pegar o valor que acontece quando qualquer mudança é feita na "input"
         setNewTasksText(event?.target.value)
     }
+
+    function deleteTask(task){
+        console.log(`deletar comentarios: ${task}`)
+
+    }
     return (
         <div className={styles.tasksBox}>
 
@@ -58,7 +63,11 @@ export function NewTask(){
             </div>
             <div className={styles.tasksCreated}>
                 {tasks.map(task => {
-                    return <Tasks key={task} content={task} />
+                    return <Tasks 
+                                onDeleteTask={deleteTask} 
+                                key={task} 
+                                content={task} 
+                            />
                 })}
                 
 
