@@ -3,7 +3,7 @@ import { PlusCircle } from 'phosphor-react'
 import { Tasks } from './Tasks'
 
 import styles from './NewTask.module.css';
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 
 interface TaskProps {
     tasks: {
@@ -17,27 +17,31 @@ interface TaskProps {
 export function NewTask(){
 
     const [tasks, setTasks] = useState([ 
-        'Comprar Feijão'
-                 
+        'Comprar Feijão'             
     ])
 
-    function handleCreateNewTask(){
+    const [newTasksText, setNewTasksText] = useState('') // Variavel para armazenar o estado inicial do input.
+
+    function handleCreateNewTask(event: FormEvent<HTMLInputElement>) {  // Gerencia a ciração de novas tasks
         event?.preventDefault()
         console.log('oi')
-        const NewTaskText = event.target.text.value
-        console.log(NewTaskText)
-        setTasks([...tasks, NewTaskText])
-                
 
-       
+        setTasks([...tasks, newTasksText])
+        setNewTasksText('')                                             // Deixa o campo input em branco=> verificar os atributos "value" e "onChange" no input.
     }
 
+
+
+    function handleNewTasksChange(event: ChangeEvent<HTMLInputElement>) { // Método para monitorar e pegar o valor que acontece quando qualquer mudança é feita na "input"
+        setNewTasksText(event?.target.value)
+    }
     return (
         <div className={styles.tasksBox}>
 
             <form onSubmit={handleCreateNewTask}>
                 <div className={styles.newTask} >
-                    <input name="text" placeholder='Adicione uma Tarefa'>
+                   
+                    <input onChange={handleNewTasksChange} value={newTasksText}  name="text" placeholder='Adicione uma Tarefa'>  
                     </input>
                     <button type='submit'>
                             Clicar
