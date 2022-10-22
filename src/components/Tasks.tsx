@@ -21,7 +21,7 @@ export function Tasks( props:TaskProps ){
                <input type="checkbox" /> 
                
               <span>{props.content}</span>
-
+            <button onClick={handleDeleteTask} title='Deletar Task'>  
                <Trash size={24} />
      </div>
     )

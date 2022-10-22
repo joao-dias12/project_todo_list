@@ -36,8 +36,11 @@ export function NewTask(){
         setNewTasksText(event?.target.value)
     }
 
-    function deleteTask(task){
-        console.log(`deletar comentarios: ${task}`)
+    function deleteTask(taskToDelete:string){
+        console.log(`deletar comentarios: ${taskToDelete}`)
+        const tasksWithoutDeletedOne =  tasks.filter(task => task!== taskToDelete)
+        // Trabalhando a imutabilidade, ou seja iremos setar uma lista de "Tasks" sem a task que queremos deletar
+        setTasks(tasksWithoutDeletedOne) // setando a lista nova.
 
     }
     return (
