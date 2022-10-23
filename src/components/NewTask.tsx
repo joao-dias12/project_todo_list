@@ -22,12 +22,22 @@ export function NewTask(){
 
     const [newTasksText, setNewTasksText] = useState('') // Variavel para armazenar o estado inicial do input.
 
+
+    function interfaceWithNoTasks(numberOfTasks: number) {
+        if (numberOfTasks === 0) {
+        var container = document.getElementById('emptyListOfTasks')
+        container!.style.display = 'block'  
+        }
+    }
+
     function handleCreateNewTask(event: FormEvent<HTMLInputElement>) {  // Gerencia a ciração de novas tasks
         event?.preventDefault()
         console.log('oi')
 
         setTasks([...tasks, newTasksText])
-        setNewTasksText('')                                             // Deixa o campo input em branco=> verificar os atributos "value" e "onChange" no input.
+        interfaceWithNoTasks(tasks.length)
+        setNewTasksText('')                                   // Deixa o campo input em branco=> verificar os atributos "value" e "onChange" no input.
+        
     }
 
 
