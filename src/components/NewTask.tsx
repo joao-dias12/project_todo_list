@@ -5,22 +5,15 @@ import { Tasks } from './Tasks'
 import styles from './NewTask.module.css';
 import { useState, FormEvent, ChangeEvent } from 'react';
 
-interface TaskProps {
-    tasks: {
-        content:string;
-        isCompleted:boolean;
-    }
-}
-
-
 
 export function NewTask(){
 
     const [tasks, setTasks] = useState([ 
-        'Comprar Feijão'             
+       {content:'Comprar Feijão', isCompleted:false}, // Primeiro item das nossas tasks
+                    
     ])
 
-    const [newTasksText, setNewTasksText] = useState('') // Variavel para armazenar o estado inicial do input.
+    const [newTasksText, setNewTasksText] = useState({content:'', isCompleted:false}) // Variavel para armazenar o estado inicial do input.
 
 
     function interfaceWithNoTasks(numberOfTasks: number) {
@@ -32,22 +25,27 @@ export function NewTask(){
 
     function handleCreateNewTask(event: FormEvent<HTMLInputElement>) {  // Gerencia a ciração de novas tasks
         event?.preventDefault()
-        console.log('oi')
-
-        setTasks([...tasks, newTasksText])
+        console.log(event.target.text.value)
+        setTasks([...tasks,{content: event.target.text.value, isCompleted:false}])
         interfaceWithNoTasks(tasks.length)
-        setNewTasksText('')                                   // Deixa o campo input em branco=> verificar os atributos "value" e "onChange" no input.
+        setNewTasksText({content:'', isCompleted:false})                                   // Deixa o campo input em branco=> verificar os atributos "value" e "onChange" no input.
         
     }
 
 
 
+
     function handleNewTasksChange(event: ChangeEvent<HTMLInputElement>) { // Método para monitorar e pegar o valor que acontece quando qualquer mudança é feita na "input"
-        setNewTasksText(event?.target.value)
+        setNewTasksText({content:event?.target.value, isCompleted:false})
     }
 
-    function deleteTask(taskToDelete:string){
-        console.log(`deletar comentarios: ${taskToDelete}`)
+    function handleConclusionTask(){
+
+    }
+    
+
+    function deleteTask(taskToDelete:TaskProps){
+        console.log(`deletar comentarios: ${taskToDelete.content}`)
         const tasksWithoutDeletedOne =  tasks.filter(task => task!== taskToDelete)
         // Trabalhando a imutabilidade, ou seja iremos setar uma lista de "Tasks" sem a task que queremos deletar
         setTasks(tasksWithoutDeletedOne) // setando a lista nova.
@@ -70,17 +68,18 @@ export function NewTask(){
                 </div>
             </form>
             <div className={styles.statusTasks}>
-                <span>Tarefas Criadas {tasks.length}</span> 
+                <span>Tarefas Criadas: {tasks.length}</span> 
                         
-                <span>Tarefas Concluidas</span>
+                <span>Tarefas Concluidas {tasks.length}</span>
 
             </div>
             <div id='tasksBiggerThan0' className={styles.tasksCreated}>
                 {tasks.map(task => {
                     return <Tasks 
                                 onDeleteTask={deleteTask} 
-                                key={task} 
-                                content={task} 
+                                key={task.content} 
+                                content={task.content}
+                                isCompleted={task.isCompleted} 
                             />
                 })}
             <div id='emptyListOfTasks' className={styles.emptyListOfTasks}>
