@@ -60,7 +60,7 @@ export function NewTask(){
                 </div>
             </form>
             <div className={styles.statusTasks}>
-                <span>Tarefas Criadas</span> 
+                <span>Tarefas Criadas {tasks.length}</span> 
                         
                 <span>Tarefas Concluidas</span>
 
