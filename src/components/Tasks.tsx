@@ -29,6 +29,8 @@ export function Tasks( props:TaskProps ){
         }
         else{
             console.log('Pendente')
+            var taskDescription = document.getElementById('taskDescription');
+            taskDescription.style.textDecoration = 'none';
         }
     }
     return (
