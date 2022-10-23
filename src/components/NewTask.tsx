@@ -41,6 +41,7 @@ export function NewTask(){
         const tasksWithoutDeletedOne =  tasks.filter(task => task!== taskToDelete)
         // Trabalhando a imutabilidade, ou seja iremos setar uma lista de "Tasks" sem a task que queremos deletar
         setTasks(tasksWithoutDeletedOne) // setando a lista nova.
+        interfaceWithNoTasks(tasksWithoutDeletedOne.length)
 
     }
     return (
@@ -64,7 +65,7 @@ export function NewTask(){
                 <span>Tarefas Concluidas</span>
 
             </div>
-            <div className={styles.tasksCreated}>
+            <div id='tasksBiggerThan0' className={styles.tasksCreated}>
                 {tasks.map(task => {
                     return <Tasks 
                                 onDeleteTask={deleteTask} 
@@ -72,6 +73,10 @@ export function NewTask(){
                                 content={task} 
                             />
                 })}
+            <div id='emptyListOfTasks' className={styles.emptyListOfTasks}>
+                Sua lista está vazia, crie novas tasks
+
+            </div>
                 
 
             </div>

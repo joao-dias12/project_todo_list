@@ -61,6 +61,11 @@
 
 .tasksCreated{
     
+    width: 100%;
+    
+}
+.emptyListOfTasks{
+    display: none;
     
 }
 @media (max-width: 768px) {  /*quando a tela for menor que 768 px */
