@@ -51,7 +51,7 @@ export function NewTask(){
         const tasksWithoutDeletedOne =  tasks.filter(task => task!== taskToDelete)
         // Trabalhando a imutabilidade, ou seja iremos setar uma lista de "Tasks" sem a task que queremos deletar
         setTasks(tasksWithoutDeletedOne) // setando a lista nova.
-        interfaceWithNoTasks(tasksWithoutDeletedOne.length)
+        interfaceWithNoTasks(tasksWithoutDeletedOne.length) // enviando o tamanho da nova lista de tasks
 
     }
     return (
