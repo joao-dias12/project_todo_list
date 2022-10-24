@@ -58,7 +58,7 @@ export function NewTask(){
             <form onSubmit={handleCreateNewTask}>
                 <div className={styles.newTask} >
                    
-                    <input onChange={handleNewTasksChange} value={newTasksText}  name="text" placeholder='Adicione uma Tarefa'>  
+                    <input onChange={handleNewTasksChange} value={newTasksText.content}  name="text" placeholder='Adicione uma Tarefa'>  
                     </input>
                     <button type='submit'>
                             Clicar
