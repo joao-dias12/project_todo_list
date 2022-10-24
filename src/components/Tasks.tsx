@@ -15,30 +15,35 @@ export function Tasks( props:TaskProps ){
         props.onDeleteTask(props.content);
     }
 
-    function handleConclusionTask(event: ChangeEvent){
+    
+    function handleConclusionTask(value: unknown, key){
         // var check = document.getElementById('check');
         // if (check.checked == true) {
         //     console.log('conclusion')
         //     }
-        const checkBoxConcluded = event.target
-        
-        if (checkBoxConcluded.checked == true){
+        // props.isCompleted = true
             console.log('conclusion')
-            var taskDescription = document.getElementById('taskDescription');
-            taskDescription.style.textDecoration = 'line-through';
+        console.log(props.tasks)
+        props.setTasks(props.tasks.map(task => {
+            if (task.content == props.content) {
+                return{
+                    ...task,
+                    [key]:value // Garante a reflexão
         }
-        else{
-            console.log('Pendente')
-            var taskDescription = document.getElementById('taskDescription');
-            taskDescription.style.textDecoration = 'none';
         }
+            return task
+        }))                
     }
+
+    
     return (
         
         <div  className={styles.taskUnit} >
-            <input onChange={handleConclusionTask} id='check' type="checkbox" /> 
+            <input  onChange={e => handleConclusionTask(e.target.checked, 'isCompleted')} id='check' type="checkbox" /> 
                
-            <span id='taskDescription'>{props.content}</span>
+            <span style={{
+                textDecoration:props.isCompleted && 'line-through'
+            }} id='taskDescription'>{props.content}</span>
             <button onClick={handleDeleteTask} title='Deletar Task'>  
                 <Trash size={24} />
             </button>  

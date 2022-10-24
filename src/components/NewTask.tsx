@@ -76,10 +76,12 @@ export function NewTask(){
 
             </div>
             <div id='tasksBiggerThan0' className={styles.tasksCreated}>
-                {tasks.map(task => {
+                {tasks.map(task =>  {
                     return <Tasks 
                                 onDeleteTask={deleteTask} 
                                 key={task.content} 
+                                tasks={tasks}
+                                setTasks={setTasks}
                                 content={task.content}
                                 isCompleted={task.isCompleted} 
                             />
