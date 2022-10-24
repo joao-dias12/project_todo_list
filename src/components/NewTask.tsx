@@ -13,6 +13,8 @@ export function NewTask(){
                     
     ])
 
+    const qtOfTasksCompleted = tasks.filter(tasks => tasks.isCompleted == true).length
+
     const [newTasksText, setNewTasksText] = useState({content:'', isCompleted:false}) // Variavel para armazenar o estado inicial do input.
 
 
@@ -70,7 +72,7 @@ export function NewTask(){
             <div className={styles.statusTasks}>
                 <span>Tarefas Criadas: {tasks.length}</span> 
                         
-                <span>Tarefas Concluidas {tasks.length}</span>
+                <span>Tarefas Concluidas {qtOfTasksCompleted} de {tasks.length}</span>
 
             </div>
             <div id='tasksBiggerThan0' className={styles.tasksCreated}>
