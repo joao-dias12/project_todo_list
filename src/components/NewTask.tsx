@@ -44,9 +44,9 @@ export function NewTask(){
     }
     
 
-    function deleteTask(taskToDelete:TaskProps){
+    function deleteTask(taskToDelete:string){
         console.log(`deletar comentarios: ${taskToDelete.content}`)
-        const tasksWithoutDeletedOne =  tasks.filter(task => task!== taskToDelete)
+        const tasksWithoutDeletedOne =  tasks.filter(task => task.content!== taskToDelete)
         // Trabalhando a imutabilidade, ou seja iremos setar uma lista de "Tasks" sem a task que queremos deletar
         setTasks(tasksWithoutDeletedOne) // setando a lista nova.
         interfaceWithNoTasks(tasksWithoutDeletedOne.length) // enviando o tamanho da nova lista de tasks
