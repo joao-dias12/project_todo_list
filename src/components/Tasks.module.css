@@ -1,7 +1,18 @@
-/* .componentTask {
-    
-}
 
+.taskUnit {
+    width: 100%;
+    border-radius: 8px;
+    padding: 1rem 1rem 1rem 1rem;
+    background: var(--gray-500);
+    line-height: 1.6;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gray-300);
+    border: 1px solid var(--gray-700);
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+}
 .tasksBox{
     display: flex;
     flex-direction: column;
@@ -27,6 +38,3 @@
     color: var(--gray-400);
 }
 
-.taskUnit {
-    
-} */

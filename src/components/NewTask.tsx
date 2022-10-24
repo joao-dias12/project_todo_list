@@ -6,6 +6,11 @@ import styles from './NewTask.module.css';
 import { useState, FormEvent, ChangeEvent } from 'react';
 
 
+interface TaskProps {
+    content: string,
+    isCompleted?: boolean;
+}
+
 export function NewTask(){
 
     const [tasks, setTasks] = useState([ 
@@ -38,7 +43,7 @@ export function NewTask(){
 
 
     function handleNewTasksChange(event: ChangeEvent<HTMLInputElement>) { // Método para monitorar e pegar o valor que acontece quando qualquer mudança é feita na "input"
-        setNewTasksText({content:event?.target.value, isCompleted:false})
+        setNewTasksText(event?.target.value)
     }
 
     function handleConclusionTask(){
